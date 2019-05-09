@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t djhgit/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t mmcadocker/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run djhgit/react-test npm test -- --coverage
+  - docker run mmcadocker/react-test npm test -- --coverage
 
 after_success:
   - docker build -t mmcadocker/multi-client ./client
