@@ -13,7 +13,7 @@ after_success:
   - docker build -t djhgit/multi-nginx ./nginx
   - docker build -t djhgit/multi-server ./server
   - docker build -t djhgit/multi-worker ./worker
-  # Log in to Docker CLI
+  # Log in to Docker CLI (no widget available)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take images and push then to Docker Hub
   - docker push djhgit/multi-client
