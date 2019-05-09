@@ -9,14 +9,14 @@ script:
   - docker run djhgit/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t djhgit/multi-client ./client
-  - docker build -t djhgit/multi-nginx ./nginx
-  - docker build -t djhgit/multi-server ./server
-  - docker build -t djhgit/multi-worker ./worker
+  - docker build -t mmcadocker/multi-client ./client
+  - docker build -t mmcadocker/multi-nginx ./nginx
+  - docker build -t mmcadocker/multi-server ./server
+  - docker build -t mmcadocker/multi-worker ./worker
   # Log in to Docker CLI (no widget available)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take images and push then to Docker Hub
-  - docker push djhgit/multi-client
-  - docker push djhgit/multi-nginx
-  - docker push djhgit/multi-server
-  - docker push djhgit/multi-worker
+  - docker push mmcadocker/multi-client
+  - docker push mmcadocker/multi-nginx
+  - docker push mmcadocker/multi-server
+  - docker push mmcadocker/multi-worker
