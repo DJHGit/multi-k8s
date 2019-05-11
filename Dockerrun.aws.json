@@ -6,7 +6,7 @@
       "image": "mmcadocker/multi-client",
       "hostname": "client",
       "essential": false,
-      "memory": 128
+      "memory": 256
     },
     {
       "name": "nginx",
@@ -18,7 +18,8 @@
           "hostPort": 80,
           "containerPort": 80
         }
-      ]
+      ],
+      "memory": 256
     }
   ]
 }
