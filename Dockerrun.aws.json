@@ -5,7 +5,14 @@
       "name": "client",
       "image": "mmcadocker/multi-client",
       "hostname": "client",
-      "essential": true,
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "server",
+      "image": "mmcadocker/multi-server",
+      "hostname": "api",
+      "essential": false,
       "memory": 128
     }
   ]
