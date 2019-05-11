@@ -2,16 +2,17 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "nginx",
-      "image": "mmcadocker/multi-nginx",
-      "hostname": "nginx",
-      "essential": true,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 80
-        }
-      ],
+      "name": "client",
+      "image": "mmcadocker/multi-client",
+      "hostname": "client",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "server",
+      "image": "mmcadocker/multi-server",
+      "hostname": "api",
+      "essential": false,
       "memory": 128
     }
   ]
