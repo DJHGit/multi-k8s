@@ -12,7 +12,7 @@
       "name": "server",
       "image": "mmcadocker/multi-server",
       "hostname": "api",
-      "essential": false,
+      "essential": true,
       "memory": 128
     }
   ]
