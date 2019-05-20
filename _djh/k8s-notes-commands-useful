@@ -1,5 +1,5 @@
 =======
-kubectl   incl some 'minikube'
+kubectl   incl 'minikube'  (selected)
 =======
 
 Bash Prompt        Suggested - PS1=$'\W\u00bb '
