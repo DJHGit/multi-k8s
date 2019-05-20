@@ -9,6 +9,7 @@ Edited Local History of Commands Issued in Date/Time Order
 ----------------------------------------------------------
 minikube start
 eval $(minikube docker-env)
+minikube dashboard
 
 kubectl options
 kubectl cluster-info
