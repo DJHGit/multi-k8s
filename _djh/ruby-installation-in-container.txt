@@ -1,0 +1,14 @@
+==============================
+Ruby Installation in Container   Local Machine
+==============================
+Outside Container:
+    docker run -it -v $(pwd):/app ruby:2.3 sh
+
+Inside Container:
+    gem install travis --no-document
+    [ gem install travis ]   * not used in actual installation exercise *
+    travis login
+    travis encrypt-file service-account.json -r  DJHGit/multi-k8s
+
+
+
