@@ -1,0 +1,87 @@
+												======
+												DOCKER	Cheat Sheet
+======											======
+USEFUL
+======
+		REPOSITORY		TAG			SIZE
+		----------		---			----
+		node            alpine		77.6MB
+		ubuntu          latest		102MB
+		alpine          latest		5.53MB
+		busybox  		latest		95MB
+		fedora 			latest		275MB
+		hello-world		latest		1.84kB
+
+		OTHER
+		-----
+		eval $(minikube docker-env)		-	Configure the VM to use your docker server
+											#####  TEMPORARY CHANGE - FOR CURRENT TERMINAL ONLY  #####
+===========
+DESTROY ALL   Containers and Images *** ALL ***
+===========
+cons=$(docker container list -aq); if [ ! -z "$cons" ]; then docker container stop $cons; docker container rm --force $cons; else echo "No containers to start with."; fi; imgs=$(docker image list -aq); if [ ! -z "$imgs" ]; then docker image rm $imgs; else echo "No images to start with."; fi; echo "Please review the following tables for possible remaining containers or images -"; docker container list -a; docker image list -a;
+
+======
+IMAGES
+======
+		List  	images
+		----
+				docker image list  [ -a, --all ]
+
+		Remove  unused images
+		------
+				docker image prune  [ -a, --all ]
+
+		Remove 	one or more images
+		------
+				docker image remove IMAGE  [ IMAGE ... ]
+
+		Build 	image from a Dockerfile
+		-----
+				docker build .
+
+==========
+CONTAINERS	See also "docker-compose" command equivalents, affecting multiple containers at once, in this section 
+==========
+
+		Run		Run a command in a new ( NON-EXISTENT -- IMMEDIATELY CREATED ) container
+		---
+				docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+									 > e.g. docker run --name test -it debian
+		List	Containers
+		----
+				docker container list -all --size
+				docker container ls   -a   --size
+				docker container ps   -a   --size
+
+		Create	container
+		------
+				docker create -t -i fedora bash
+							        > 6d8af538ec541dd581ebc2a24153a28329acb5268abe5ef868c1f1a261221752
+
+		Start	one or more stopped containers
+		-----
+				docker start -a -i 6d8af538ec5		( see above )
+					               > bash-4.2#
+
+				docker-compose up -d [ --build ]	(all containers)
+
+		Stop	Stop one or more running containers
+		----
+				docker stop [OPTIONS] CONTAINER [CONTAINER...]
+
+				docker-compose down	(all containers)
+
+		Kill	one or more running containers
+		----
+				docker kill [ --signal , -s ] CONTAINER [CONTAINER...]
+
+				Note: Signal -	see overview of signals "http://man7.org/linux/man-pages/man7/signal.7.html"
+								default is "SIGKILL"
+								e.g. docker kill --signal=SIGHUP my_container
+						
+		Remove	all stopped containers
+		------
+				docker container prune  [ -f, --force	Do not prompt for confirmation]
+
+

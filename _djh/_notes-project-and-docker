@@ -1,0 +1,43 @@
+===========
+DESTROY ALL   Containers and Images *** ALL CONTAINERS AND IMAGES ***
+===========
+cons=$(docker container list -aq); if [ ! -z "$cons" ]; then docker container stop $cons; docker container rm --force $cons; else echo "No containers to start with."; fi; imgs=$(docker image list -aq); if [ ! -z "$imgs" ]; then docker image rm $imgs; else echo "No images to start with."; fi; echo "Please review the following tables for possible remaining containers or images -"; docker container list -a; docker image list -a;
+
+===							============
+AWS   Parameters - Select   multi-docker
+===							============
+
+Instance
+--------
+Application Name:			multi-docker
+Web server environment:		MultiDocker-env
+Preconfigured platform:		Multi-container Docker	 			"All Applications > multi-docker > MultiDocker-env ( Environment ID: e-t8bgbnv4xp )"
+
+RDS
+---
+DB engine:					PostgreSQL
+License model:				postgresql-license
+DB engine version:			PostgreSQL 10.6-R1
+DB instance class:			db.t2.micro - 1vCPU, 1 GiB RAM
+
+DB instance identifier:		multi-docker-postgres
+Master username:			postgress
+Master password:			postgresspassword
+
+Database Name:				fibvalues							"RDS > Databases > multi-docker-postgress"
+
+Redis
+-----
+Name:						multi-docker-re
+Node type:					cache.t2.micro (0.5 GiB)
+Number of replicas:			0
+
+Subnet group:				multi-docker-re-group
+
+Security Group
+--------------
+Security group name:		multi-docker-sg
+Description:				multi-docker-sg: Traffic for services in multi-docker app
+VPC:						vpc-eeb48e88
+Security Group ID:			sg-06513af273a77b58c
+

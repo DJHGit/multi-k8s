@@ -1,0 +1,79 @@
+==========
+Kubernetes			Local Machine Setup Notes
+==========
+
+Bash Prompt        Suggested - PS1=$'\W\u00bb '
+-----------
+
+Reference			https://matthewpalmer.net/kubernetes-app-developer/articles/install-kubernetes-ubuntu-tutorial.html
+---------			https://computingforgeeks.com/how-to-install-minikube-on-ubuntu-18-04/
+					https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux
+					https://docs.brew.sh/Homebrew-on-Linux
+				
+brew				The Missing Package Manager ( for macOS )	########## OF QUESTIONABLE VALUE ##########
+----
+	Website:		https://docs.brew.sh/Homebrew-on-Linux
+
+	Install:		sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+					sudo apt-get install build-essential
+					echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
+					eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+					brew -v
+					brew install gcc
+
+	Note:			For compilers to find isl@0.18 you may need to set:
+	  					export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib"
+						export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/isl@0.18/include"
+
+					For pkg-config to find isl@0.18 you may need to set:
+	  					export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
+kubectl
+-------
+
+	Software:		Search for 'kubectl' ...
+
+	  - or -
+
+	Website:		https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux
+
+	Install:		curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+					chmod +x ./kubectl
+					sudo mv ./kubectl /usr/local/bin/kubectl
+					kubectl version
+						> "... The connection to the server localhost:8080 was refused - did you specify the right host or port? ..."		
+
+VirtualBox			x86 Virtualization Solution
+----------
+
+	Software:		Search for 'virtualbox' ...
+	
+	  - or -
+
+	Website:		https://www.virtualbox.org/wiki/Linux_Downloads ##########  INSTRUCTIONS FAILED  ##########
+
+	Install:		sudo apt-get update
+					sudo apt-get upgrade
+					wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -   ### REQUIRED ??? ###
+					wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -		### REQUIRED ??? ###
+					sudo apt install virtualbox-qt
+					super+hold & virtualbox
+
+minikube			CLI Tool that Provisions and Manages Single-Node Kubernetes Clusters Optimized for Development Workflows
+--------			########## BIOS: Virtualization must be allowed ##########
+
+	Website:		https://kubernetes.io/docs/tasks/tools/install-minikube/
+
+	Install:		curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+					sudo cp minikube /usr/local/bin && rm minikube
+
+	Start:			Cleanup everything to start fresh -
+
+						> If you have previously installed minikube, and run:	 minikube start
+						  And this command returns an error: 					"machine does not exist"
+						  You need to wipe the configuration files:       		 rm -rf ~/.minikube
+
+	Test:			minikube status
+					minikube start		########## BIOS: Virtualization must be allowed ##########
+
+
+

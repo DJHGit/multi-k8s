@@ -1,0 +1,33 @@
+=======
+kubectl   incl some 'minikube'
+=======
+
+Bash Prompt        Suggested - PS1=$'\W\u00bb '
+-----------
+
+Edited Local History of Commands Issued in Date/Time Order
+----------------------------------------------------------
+minikube start
+eval $(minikube docker-env)
+
+kubectl options
+kubectl cluster-info
+kubectl run nginx --image=nginx:1.10.0
+kubectl config view
+kubectl get service | services
+kubectl get pod | pods
+kubectl get pods &&  kubectl logs <server-deployment-78bbd7686d-bhvtz>
+kubectl describe nodes [ <my-node> ]
+kubectl api-resources
+kubectl apply -f <client-pod.yaml>
+kubectl delete service <client-node-port>
+kubectl get deployments [ -o wide ]
+kubectl set image <deployment/client-deployment> client=<mmcadocker/multi-client:vK8s>
+kubectl delete deployment <client-deployment>
+kubectl apply -f <k8s/>
+kubectl get storageclass
+kubectl describe storageclass
+kubectl get pv
+kubectl get pvc
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=?
+kubectl get secrets
