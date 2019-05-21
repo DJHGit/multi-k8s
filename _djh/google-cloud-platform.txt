@@ -1,0 +1,21 @@
+=====================
+Google Cloud Platform   GCP
+=====================
+
+Upon creation of a new cluster or new project
+---------------------------------------------
+Run the following commands ONCE ONLY from the built-in GCP terminal -
+                           ---------
+gcloud config set project <multi-k8s-241220>
+gcloud config set compute/zone <europe-west3-c>
+gcloud container clusters get-credentials <k8s-cluster>
+
+            Note: Search the file 'travis.yml' for the equivalent code -
+             ...
+              - gcloud config set project multi-k8s-241220
+              - gcloud config set compute/zone europe-west3-c
+              - gcloud container clusters get-credentials k8s-cluster
+             ...
+
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=<password>
+

@@ -1,0 +1,30 @@
+====
+helm
+====
+
+Install
+-------
+curl -LO https://git.io/get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
+
+... before continuing ...
+
+    Role Based Access Control   ( RBAC )
+    -------------------------
+    Google’s GKE hosted Kubernetes platform enables RBAC by default.
+    You will need to create a service account for tiller,
+    and use the –service-account flag when initializing the helm server.
+
+... then ...
+
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller --upgrade
+
+    Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
+    To prevent this, run `helm init` with the --tiller-tls-verify flag.
+    For more information on securing your installation see:
+                                        https://docs.helm.sh/using_helm/#securing-your-helm-installation
+
+helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
