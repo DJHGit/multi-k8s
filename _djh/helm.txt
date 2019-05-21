@@ -28,5 +28,3 @@ helm init --service-account tiller --upgrade
                                         https://docs.helm.sh/using_helm/#securing-your-helm-installation
 
 helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
-
-                    --oOo--
