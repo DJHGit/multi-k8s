@@ -44,7 +44,7 @@ class Fib extends Component {
     for (let key in this.state.values) {
       entries.push(
         <div key={key}>
-          For index {key} I calculated {this.state.values[key]}
+          For index {key} is {this.state.values[key]}
         </div>
       );
     }
@@ -56,18 +56,23 @@ class Fib extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>Enter your index:</label>
+          <br/>
+          <label>Enter a Fibonacci index:&nbsp;&nbsp;</label>
           <input
             value={this.state.index}
             onChange={event => this.setState({ index: event.target.value })}
           />
-          <button>Submit</button>
+          &nbsp;
+          <button>Submit</button>&nbsp;&nbsp;&nbsp;Refresh page (Ctrl + r) to see result
         </form>
 
-        <h3>Indexes I have seen:</h3>
+        <h2>Indices Already Submitted</h2>
+        <h4>In Order of Arrival</h4>
+        <h5>Including Duplicates</h5>
         {this.renderSeenIndexes()}
-
-        <h3>Calculated Values:</h3>
+        <br/><br/>
+        <h2>Calculated Values</h2>
+        <h4>In Order of Finonacci Index</h4>
         {this.renderValues()}
       </div>
     );

@@ -12,8 +12,10 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Fib Calculator Version KUBERNETES!</h1>
+            <h1 className="App-title">Fibonacci Calculator</h1>
+            <h1 className="App-title-smaller">Ref - Stephen Grider (Udemy) + Redis + Postgres + Docker + Kubernetes + AWS + GCP + React</h1>
             <Link to="/">Home</Link>
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <Link to="/otherpage">Other Page</Link>
           </header>
           <div>
