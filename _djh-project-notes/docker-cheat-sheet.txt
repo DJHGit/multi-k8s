@@ -82,6 +82,6 @@ CONTAINERS	See also "docker-compose" command equivalents, affecting multiple con
 						
 		Remove	all stopped containers
 		------
-				docker container prune  [ -f, --force	Do not prompt for confirmation]
+				docker container prune  [ -f, --force	Do not prompt for confirmation ]
 
 
